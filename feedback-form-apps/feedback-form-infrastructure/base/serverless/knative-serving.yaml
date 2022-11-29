@@ -1,6 +1,0 @@
-kind: KnativeServing
-apiVersion: operator.knative.dev/v1alpha1
-metadata:
-  name: knative-serving
-  namespace: knative-serving
-spec: {}

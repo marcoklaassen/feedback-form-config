@@ -1,6 +1,0 @@
-kind: KnativeEventing
-apiVersion: operator.knative.dev/v1alpha1
-metadata:
-  name: knative-eventing
-  namespace: knative-eventing
-spec: {}
