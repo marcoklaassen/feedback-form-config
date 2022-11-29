@@ -6,10 +6,10 @@ metadata:
 spec:
   destination:
     namespace: default
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
   source:
     path: argo-apps
-    repoURL: 'https://gitlab.com/marcoklaassen/feedback-form-config.git'
+    repoURL: https://github.com/marcoklaassen/feedback-form-config
     targetRevision: HEAD
   project: default
   syncPolicy:

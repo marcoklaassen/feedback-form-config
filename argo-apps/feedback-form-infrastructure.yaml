@@ -12,5 +12,5 @@ spec:
   project: default
   source:
     path: feedback-form-apps/feedback-form-infrastructure
-    repoURL: https://gitlab.com/marcoklaassen/feedback-form-config.git
+    repoURL: https://github.com/marcoklaassen/feedback-form-config
     targetRevision: HEAD
