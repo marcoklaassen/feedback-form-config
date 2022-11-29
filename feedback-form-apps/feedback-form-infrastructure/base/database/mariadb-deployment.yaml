@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mariadb
+  labels:
+    app: mariadb
+spec:
+  containers:
+    - name: mariadb
+      image: registry.redhat.io/rhel9/mariadb-105
+      ports:
+        - containerPort: 3306
+          protocol: TCP
+      env:
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              key: user
+              name: mariadb-config
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: userPassword
+              name: mariadb-config
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              key: database
+              name: mariadb-config
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: rootPassword
+              name: mariadb-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb
+  namespace: deep-dive-kafka
+spec:
+  selector:
+    app: mariadb
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306

@@ -1,0 +1,11 @@
+resources:
+  - kafka/kafka-instance.yaml
+  - kafka/feedback-kafka-user.yaml
+  - kafka/feedback-topic.yaml
+  - kafka/kafka-server-config-secret.yaml
+  - database/mariadb-config-secret.yaml
+  - database/mariadb-deployment.yaml
+  - cicd/pipeline.yaml
+  - serverless/knative-eventing.yaml
+  - serverless/knative-kafka.yaml
+  - serverless/knative-serving.yaml

@@ -1,0 +1,75 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: quarkus-native-pipeline
+spec:
+  workspaces:
+    - name: shared-workspace
+  params:
+    - description: url of the git repo for the code of deployment
+      name: git-url
+      type: string
+    - description: revision to be used from repo of the code for deployment
+      name: git-revision
+      type: string
+      default: main
+    - description: image to be built from the code
+      name: IMAGE
+      type: string
+    - description: dockerfile location
+      name: DOCKERFILE
+      type: string
+      default: src/main/docker/Dockerfile.native
+    - description: app version
+      name: APPVERSION
+      type: string
+      default: latest
+  tasks:
+    - name: fetch-repository
+      params:
+        - name: url
+          value: $(params.git-url)
+        - name: subdirectory
+          value: ''
+        - name: deleteExisting
+          value: 'true'
+        - name: revision
+          value: $(params.git-revision)
+      taskRef:
+        kind: ClusterTask
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+    - name: build-native-executable
+      runAfter:
+        - fetch-repository
+      taskSpec:
+        workspaces:
+          - name: source
+            description: the source code
+        steps:
+          - name: build-executable
+            resources:
+              requests:
+                memory: 8Gi
+            image: quay.io/quarkus/ubi-quarkus-native-image:22.2.0-java17
+            workingDir: /workspace/source
+            command: ["./mvnw", "package", "-Pnative"]
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+    - name: build-image
+      params:
+        - name: IMAGE
+          value: $(params.IMAGE):$(params.APPVERSION)
+        - name: DOCKERFILE
+          value: $(params.DOCKERFILE)
+      runAfter:
+        - build-native-executable
+      taskRef:
+        kind: ClusterTask
+        name: buildah
+      workspaces:
+        - name: source
+          workspace: shared-workspace

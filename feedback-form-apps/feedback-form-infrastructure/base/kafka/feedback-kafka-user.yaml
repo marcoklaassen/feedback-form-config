@@ -1,0 +1,84 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaUser
+metadata:
+  name: feedback-user
+  labels:
+    strimzi.io/cluster: feedback-app-messaging
+spec:
+  authentication:
+    type: scram-sha-512
+  authorization:
+    acls:
+      - resource:
+          type: topic
+          name: feedback-topic
+          patternType: literal
+        operation: Read
+        host: '*'
+      - resource:
+          type: topic
+          name: feedback-topic
+          patternType: literal
+        operation: Describe
+        host: '*'
+      - resource:
+          type: topic
+          name: feedback-topic
+          patternType: literal
+        operation: Write
+        host: '*'
+      - resource:
+          type: topic
+          name: feedback-topic
+          patternType: literal
+        operation: Create
+        host: '*'
+      - resource:
+          type: group
+          name: feedback-topic
+          patternType: literal
+        operation: Read
+        host: '*'
+      - resource:
+          type: group
+          name: feedback-topic
+          patternType: literal
+        operation: Write
+        host: '*'
+      - resource:
+          type: group
+          name: feedback-topic
+          patternType: literal
+        operation: Describe
+        host: '*'
+      - resource:
+          type: group
+          name: feedback-topic
+          patternType: literal
+        operation: Create
+        host: '*'
+      - resource:
+          type: group
+          name: feedback-persistence
+          patternType: literal
+        operation: Describe
+        host: '*'
+      - resource:
+          type: group
+          name: feedback-persistence
+          patternType: literal
+        operation: Create
+        host: '*'
+      - resource:
+          type: group
+          name: feedback-persistence
+          patternType: literal
+        operation: Read
+        host: '*'
+      - resource:
+          type: group
+          name: feedback-persistence
+          patternType: literal
+        operation: Write
+        host: '*'
+    type: simple
