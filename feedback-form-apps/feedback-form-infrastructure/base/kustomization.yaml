@@ -6,6 +6,4 @@ resources:
   - database/mariadb-config-secret.yaml
   - database/mariadb-deployment.yaml
   - cicd/pipeline.yaml
-  - serverless/knative-eventing.yaml
   - serverless/knative-kafka.yaml
-  - serverless/knative-serving.yaml
