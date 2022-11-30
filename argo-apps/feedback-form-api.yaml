@@ -14,7 +14,3 @@ spec:
     path: feedback-form-apps/feedback-form-api/dev
     repoURL: https://github.com/marcoklaassen/feedback-form-config
     targetRevision: HEAD
-  ignoreDifferences:
-    - group: "*"
-      kind: Route
-      namespace: knative-serving-ingress
