@@ -11,8 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: feedback-form-apps/feedback-form-infrastructure
-    repoURL: https://github.com/marcoklaassen/feedback-form-config
+    repoURL: https://github.com/marcoklaassen/feedback-form-config/tree/main/feedback-form-apps/feedback-form-infrastructure
     targetRevision: "1.16.0"
     chart: feedback-form-infrastructure
     helm:
