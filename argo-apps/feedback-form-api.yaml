@@ -15,6 +15,6 @@ spec:
     repoURL: https://github.com/marcoklaassen/feedback-form-config
     targetRevision: HEAD
   ignoreDifferences:
-    - group: *
+    - group: "*"
       kind: Route
       namespace: knative-serving-ingress
