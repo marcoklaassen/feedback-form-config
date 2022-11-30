@@ -14,3 +14,5 @@ spec:
     path: feedback-form-apps/feedback-form-infrastructure
     repoURL: https://github.com/marcoklaassen/feedback-form-config
     targetRevision: HEAD
+    chart: feedback-form-infrastructure
+    releaseName: dev

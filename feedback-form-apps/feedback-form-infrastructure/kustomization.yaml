@@ -1,6 +1,0 @@
-resources:
-  - dev
-#  - integration
-#  - production
-commonLabels:
-  app: feedback-form

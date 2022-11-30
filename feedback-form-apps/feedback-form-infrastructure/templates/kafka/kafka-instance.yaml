@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
-  name: feedback-app-messaging
+  name: {{ .Release.Name }}-feedback-app-messaging
 spec:
   kafka:
     config:
@@ -32,9 +32,9 @@ spec:
           type: scram-sha-512
   entityOperator:
     topicOperator:
-      watchedNamespace: "feedback-app"
+      watchedNamespace: "{{ .Values.namespace }}"
     userOperator:
-      watchedNamespace: "feedback-app"
+      watchedNamespace: "{{ .Values.namespace }}"
   zookeeper:
     storage:
       type: ephemeral

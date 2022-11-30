@@ -1,7 +1,7 @@
 kind: KnativeKafka
 apiVersion: operator.serverless.openshift.io/v1alpha1
 metadata:
-  name: knative-kafka
+  name: {{ .Release.Name }}-knative-kafka
   namespace: knative-eventing
 spec:
   broker:

@@ -1,9 +1,9 @@
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
-  name: feedback-topic
+  name: {{ .Release.Name }}-feedback-topic
   labels:
-    strimzi.io/cluster: feedback-app-messaging
+    strimzi.io/cluster: {{ .Release.Name }}-feedback-app-messaging
 spec:
   config:
     retention.ms: 604800000

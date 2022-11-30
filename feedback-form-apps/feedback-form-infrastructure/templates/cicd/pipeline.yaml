@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: quarkus-native-pipeline
+  name: {{ .Release.Name }}-quarkus-native-pipeline
 spec:
   workspaces:
     - name: shared-workspace

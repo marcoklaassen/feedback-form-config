@@ -1,7 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mariadb
+  name: {{ .Release.Name }}-mariadb
+  labels:
+    app: {{ .Release.Name }}-mariadb
 spec:
   containers:
     - name: mariadb
@@ -34,10 +36,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mariadb
+  name: {{ .Release.Name }}-mariadb
 spec:
   selector:
-    app: mariadb
+    app: {{ .Release.Name }}-mariadb
   ports:
     - protocol: TCP
       port: 3306
