@@ -22,7 +22,7 @@ spec:
       enable: false
       caCert:
         secretKeyRef:
-          name: deep-dive-kafka-cluster-ca-cert
+          name: app-messaging-cluster-ca-cert
           key: ca.crt
   consumerGroup: feedback-persistence
   bootstrapServers:
