@@ -1,0 +1,37 @@
+apiVersion: sources.knative.dev/v1beta1
+kind: KafkaSource
+metadata:
+  name: kafka-source-feedback
+spec:
+  net:
+    sasl:
+      enable: true
+      user:
+        secretKeyRef:
+          name: kafka-config
+          key: kafka.user.name
+      type:
+        secretKeyRef:
+          name: kafka-config
+          key: kafka.user.sasl.type
+      password:
+        secretKeyRef:
+          name: feedback-user
+          key: password
+    tls:
+      enable: false
+      caCert:
+        secretKeyRef:
+          name: deep-dive-kafka-cluster-ca-cert
+          key: ca.crt
+  consumerGroup: feedback-persistence
+  bootstrapServers:
+    - kafka-instance-name-kafka-bootstrap.namespace.svc.cluster.local:9092
+  topics:
+    - feedback-topic
+  sink:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: feedback-persistence
+    uri: /feedback

@@ -1,0 +1,29 @@
+resources:
+  - ./../base
+
+namePrefix: dev-
+
+images:
+  - name: feedback-persistence-image
+    newName: image-registry.openshift-image-registry.svc:5000/feedback-app/feedback-persistence
+    newTag: dev
+
+patchesJson6902:
+- target:
+    version: v1
+    group: serving.knative.dev
+    kind: Service
+    name: feedback-persistence
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/env/0/valueFrom/secretKeyRef/name
+      value: dev-mariadb-config
+    - op: replace
+      path: /spec/template/spec/containers/0/env/1/valueFrom/secretKeyRef/name
+      value: dev-mariadb-config
+    - op: replace
+      path: /spec/template/spec/containers/0/env/2/valueFrom/secretKeyRef/name
+      value: dev-mariadb-config
+    - op: replace
+      path: /spec/template/spec/containers/0/env/3/valueFrom/secretKeyRef/name
+      value: dev-mariadb-config
