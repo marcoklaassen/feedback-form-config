@@ -1,0 +1,8 @@
+resources:
+  - ./../base
+namePrefix: dev-
+
+images:
+  - name: feedback-ui-image
+    newName: registry.redhat.io/ubi9/nginx-120
+    newTag: "1-75"
