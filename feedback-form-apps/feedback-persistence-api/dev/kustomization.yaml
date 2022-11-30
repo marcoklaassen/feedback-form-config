@@ -4,8 +4,8 @@ namePrefix: dev-
 
 images:
   - name: feedback-persistence-image
-    newName: image-registry.openshift-image-registry.svc:5000/feedback-app/feedback-persistence
-    newTag: dev
+    newName: image-registry.openshift-image-registry.svc:5000/feedback-app/feedback-persistence-api
+    newTag: latest
 
 patchesJson6902:
   - target:
