@@ -22,3 +22,5 @@ spec:
                 secretKeyRef:
                   key: sasl.jaas.config
                   name: feedback-user
+            - name: kafka-topic
+              value: topic-name

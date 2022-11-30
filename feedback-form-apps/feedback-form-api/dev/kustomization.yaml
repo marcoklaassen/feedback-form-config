@@ -20,3 +20,6 @@ patchesJson6902:
       - op: replace
         path: /spec/template/spec/containers/0/env/1/valueFrom/secretKeyRef/name
         value: dev-feedback-user
+      - op: replace
+        path: /spec/template/spec/containers/0/env/2/value
+        value: dev-feedback-topic
