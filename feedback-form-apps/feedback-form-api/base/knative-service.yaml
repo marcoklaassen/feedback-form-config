@@ -1,0 +1,24 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: feedback-form
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/min-scale: "0"
+        autoscaling.knative.dev/max-scale: "5"
+    spec:
+      containers:
+        - image: feedback-form-image
+          env:
+            - name: kafka-bootstrap-servers
+              valueFrom:
+                secretKeyRef:
+                  key: kafka.bootstrap.servers
+                  name: kafka-config
+            - name: kafka-sasl-jaas-config
+              valueFrom:
+                secretKeyRef:
+                  key: sasl.jaas.config
+                  name: feedback-user

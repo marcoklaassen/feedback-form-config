@@ -1,0 +1,22 @@
+resources:
+  - ./../base
+namePrefix: dev-
+
+images:
+  - name: feedback-form-image
+    newName: image-registry.openshift-image-registry.svc:5000/feedback-app/feedback-form
+    newTag: dev
+
+patchesJson6902:
+  - target:
+      version: v1
+      group: serving.knative.dev
+      kind: Service
+      name: feedback-form
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/env/0/valueFrom/secretKeyRef/name
+        value: dev-kafka-config
+      - op: replace
+        path: /spec/template/spec/containers/0/env/1/valueFrom/secretKeyRef/name
+        value: dev-feedback-user
