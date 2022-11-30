@@ -19,11 +19,13 @@ spec:
           name: feedback-user
           key: password
     tls:
-      enable: false
       caCert:
         secretKeyRef:
           name: app-messaging-cluster-ca-cert
           key: ca.crt
+      enable: false
+      cert: {}
+      key: {}
   consumerGroup: feedback-persistence
   bootstrapServers:
     - kafka-instance-name-kafka-bootstrap.namespace.svc.cluster.local:9092
