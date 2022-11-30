@@ -23,7 +23,6 @@ spec:
         secretKeyRef:
           name: app-messaging-cluster-ca-cert
           key: ca.crt
-      enable: false
       cert: {}
       key: {}
   consumerGroup: feedback-persistence
