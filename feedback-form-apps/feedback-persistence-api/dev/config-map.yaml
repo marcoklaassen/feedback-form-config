@@ -1,8 +1,0 @@
---- # This CM is only used for Kustomize replacements
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: dev-stage-config
-data:
-  mariadbConfigSecretName: dev-mariadb-config
-  kafkaConfigSecretName: dev-kafka-config
