@@ -15,4 +15,5 @@ spec:
     repoURL: https://github.com/marcoklaassen/feedback-form-config
     targetRevision: HEAD
     chart: feedback-form-infrastructure
-    releaseName: dev
+    helm:
+      releaseName: dev
