@@ -16,22 +16,22 @@ spec:
           valueFrom:
             secretKeyRef:
               key: user
-              name: mariadb-config
+              name: {{ .Release.Name }}-mariadb-config
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
               key: userPassword
-              name: mariadb-config
+              name: {{ .Release.Name }}-mariadb-config
         - name: MYSQL_DATABASE
           valueFrom:
             secretKeyRef:
               key: database
-              name: mariadb-config
+              name: {{ .Release.Name }}-mariadb-config
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               key: rootPassword
-              name: mariadb-config
+              name: {{ .Release.Name }}-mariadb-config
 ---
 apiVersion: v1
 kind: Service
