@@ -4,5 +4,5 @@ namePrefix: dev-
 
 images:
   - name: feedback-ui-image
-    newName: ubi9/nginx-120
+    newName: image-registry.openshift-image-registry.svc:5000/feedback-app/nginx-120
     newTag: "1-75"
