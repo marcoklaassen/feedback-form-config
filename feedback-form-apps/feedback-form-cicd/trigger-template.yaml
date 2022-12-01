@@ -36,7 +36,7 @@ spec:
             value: >-
               image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/$(tt.params.git-repo-name)
         pipelineRef:
-          name: dev-quarkus-native-pipeline
+          name: quarkus-native-pipeline
         serviceAccountName: pipeline
         workspaces:
           - name: shared-workspace

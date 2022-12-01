@@ -65,4 +65,6 @@ spec: {}
 status: {}
 ```
 
-## Config Repository
+## CICD configuration
+
+* Add webhook to your github project `https://github.com/marcoklaassen/feedback-form-api/settings/hooks`
