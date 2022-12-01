@@ -1,0 +1,18 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: el-quarkus-app-event-listener
+  namespace: feedback-app
+  labels:
+    app.kubernetes.io/managed-by: EventListener
+    app.kubernetes.io/part-of: Triggers
+    eventlistener: quarkus-app-event-listener
+spec:
+  host: el-quarkus-app-event-listener-feedback-app.apps.ocp4.klaassen.click
+  to:
+    kind: Service
+    name: el-quarkus-app-event-listener
+    weight: 100
+  port:
+    targetPort: http-listener
+  wildcardPolicy: None
