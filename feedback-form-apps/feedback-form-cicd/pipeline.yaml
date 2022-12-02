@@ -5,6 +5,7 @@ metadata:
 spec:
   workspaces:
     - name: shared-workspace
+    - name: local-maven-repo
   params:
     - description: url of the git repo for the code of deployment
       name: git-url
@@ -44,6 +45,8 @@ spec:
         workspaces:
           - name: source
             description: the source code
+          - name: maven-repo
+            description: the local maven repository
         steps:
           - name: build-executable
             resources:
@@ -51,10 +54,16 @@ spec:
                 memory: 8Gi
             image: quay.io/quarkus/ubi-quarkus-native-image:22.2.0-java17
             workingDir: /workspace/source
-            command: ["./mvnw", "package", "-Pnative"]
+            command:
+              - ./mvnw
+              - package
+              - '-Pnative'
+              - '-Dmaven.repo.local=$(workspaces.maven-repo.path)'
       workspaces:
         - name: source
           workspace: shared-workspace
+        - name: maven-repo
+          workspace: local-maven-repo
     - name: build-image
       params:
         - name: IMAGE

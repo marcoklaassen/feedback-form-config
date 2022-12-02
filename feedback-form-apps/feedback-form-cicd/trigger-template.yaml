@@ -39,6 +39,9 @@ spec:
           name: quarkus-native-pipeline
         serviceAccountName: pipeline
         workspaces:
+          - name: local-maven-repo
+            persistentVolumeClaim:
+              claimName: maven-repo-pvc
           - name: shared-workspace
             volumeClaimTemplate:
               spec:
