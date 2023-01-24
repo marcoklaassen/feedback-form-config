@@ -17,6 +17,10 @@ spec:
     storage:
       type: ephemeral
     replicas: 3
+    resources:
+      requests:
+        memory: 2Gi
+        cpu: 20m
     listeners:
       - name: plain
         port: 9092
@@ -31,11 +35,28 @@ spec:
         authentication:
           type: scram-sha-512
   entityOperator:
+    tlsSidecar:
+      resources:
+        requests:
+          memory: 1Gi
+          cpu: 10m
     topicOperator:
       watchedNamespace: "{{ .Values.namespace }}"
+      resources:
+        requests:
+          memory: 1Gi
+          cpu: 10m
     userOperator:
       watchedNamespace: "{{ .Values.namespace }}"
+      resources:
+        requests:
+          memory: 1Gi
+          cpu: 10m
   zookeeper:
     storage:
       type: ephemeral
     replicas: 3
+    resources:
+      requests:
+        memory: 1Gi
+        cpu: 50m
