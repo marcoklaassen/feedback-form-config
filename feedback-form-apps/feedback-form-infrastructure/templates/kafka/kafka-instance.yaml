@@ -20,7 +20,7 @@ spec:
     resources:
       requests:
         memory: 2Gi
-        cpu: 20m
+        cpu: 10m
     listeners:
       - name: plain
         port: 9092
@@ -59,4 +59,4 @@ spec:
     resources:
       requests:
         memory: 1Gi
-        cpu: 50m
+        cpu: 10m
