@@ -16,14 +16,14 @@ Configure the serverless operator with following resources:
 
 ```
 kind: KnativeEventing
-apiVersion: operator.knative.dev/v1alpha1
+apiVersion: operator.knative.dev/v1beta1
 metadata:
   name: knative-eventing
   namespace: knative-eventing
 spec: {}
 ---
 kind: KnativeServing
-apiVersion: operator.knative.dev/v1alpha1
+apiVersion: operator.knative.dev/v1beta1
 metadata:
   name: knative-serving
   namespace: knative-serving
