@@ -13,4 +13,4 @@ spec:
   source:
     path: feedback-form-apps/feedback-form-ui/dev
     repoURL: https://github.com/marcoklaassen/feedback-form-config
-    targetRevision: HEAD
+    targetRevision: feature/hybrid-cloud

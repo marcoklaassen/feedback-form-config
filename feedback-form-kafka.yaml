@@ -10,7 +10,7 @@ spec:
   source:
     path: argo-apps
     repoURL: https://github.com/marcoklaassen/feedback-form-config
-    targetRevision: HEAD
+    targetRevision: feature/hybrid-cloud
     directory:
       include: 'feedback-form-kafka.yaml'
   project: default
