@@ -12,7 +12,7 @@ spec:
     repoURL: https://github.com/marcoklaassen/feedback-form-config
     targetRevision: HEAD
     directory:
-      exclude: 'feedback-form-kafka.yaml'
+      include: 'feedback-form-kafka.yaml'
   project: default
   syncPolicy:
     automated:

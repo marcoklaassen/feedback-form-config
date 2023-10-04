@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: feedback-form-infrastructure
+  namespace: openshift-gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: feedback-app
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      releaseName: dev
+      valueFiles:
+        - values.yaml
+      valuesObject:
+        include:
+          database: true
+    path: feedback-form-apps/feedback-form-infrastructure
+    repoURL: https://github.com/marcoklaassen/feedback-form-config
+    targetRevision: HEAD    

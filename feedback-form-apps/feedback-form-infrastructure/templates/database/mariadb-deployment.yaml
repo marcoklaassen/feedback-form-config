@@ -1,3 +1,4 @@
+{{- if .Values.include.database }}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -44,3 +45,4 @@ spec:
     - protocol: TCP
       port: 3306
       targetPort: 3306
+{{- end }}
