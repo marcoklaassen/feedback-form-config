@@ -68,3 +68,19 @@ status: {}
 ## CICD configuration
 
 * Add webhook to your github project `https://github.com/marcoklaassen/feedback-form-api/settings/hooks`
+
+## Copy Kafka CA Cert and Kafka User Secrets
+
+Copy from cluster with installed and configured AMQ Streams operator
+
+```
+oc get secret -n feedback-app -o yaml dev-feedback-app-messaging-cluster-ca-cert | kubectl neat > dev-feedback-app-messaging-cluster-ca-cert.yaml
+oc get secret -n feedback-app -o yaml dev-feedback-user | kubectl neat > dev-feedback-user.yaml
+```
+
+and apply to cluster with installed middleware and applications
+
+```
+oc apply -f dev-feedback-app-messaging-cluster-ca-cert.yaml
+oc apply -f dev-feedback-user.yaml
+```
