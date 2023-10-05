@@ -5,7 +5,7 @@ namePrefix: dev-
 images:
   - name: feedback-form-image
     newName: image-registry.openshift-image-registry.svc:5000/feedback-app/feedback-form-api
-    newTag: 56014b0d7265e761a055581a146216bfbdcf7a09
+    newTag: 408644242100bdf1a2cbe475e1edbc569f0aced3
 
 patchesJson6902:
   - target:
