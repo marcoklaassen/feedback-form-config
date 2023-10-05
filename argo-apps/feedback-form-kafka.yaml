@@ -15,7 +15,7 @@ spec:
       releaseName: dev
       valueFiles:
         - values.yaml
-      valuesObject:
+      values: |
         include:
           kafka: true
     path: feedback-form-apps/feedback-form-infrastructure
