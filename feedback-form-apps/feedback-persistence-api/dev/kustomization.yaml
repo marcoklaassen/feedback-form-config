@@ -31,7 +31,7 @@ patchesJson6902:
         value: dev-feedback-persistence
       - op: replace
         path: /spec/bootstrapServers/0
-        value: dev-feedback-app-messaging-kafka-bootstrap.feedback-app.svc.cluster.local:9092
+        value: dev-feedback-app-messaging-kafka-tls-bootstrap-feedback-app.apps.u3jjun8p.westeurope.aroapp.io
       - op: replace
         path: /spec/topics/0
         value: dev-feedback-topic

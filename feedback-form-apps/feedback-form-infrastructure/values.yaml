@@ -2,3 +2,4 @@ namespace: feedback-app
 include:
   database: false
   kafka: false
+  kafkaConfigSecret: false
