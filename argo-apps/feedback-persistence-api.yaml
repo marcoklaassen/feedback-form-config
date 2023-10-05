@@ -14,3 +14,7 @@ spec:
     path: feedback-form-apps/feedback-persistence-api/dev
     repoURL: https://github.com/marcoklaassen/feedback-form-config
     targetRevision: feature/hybrid-cloud
+  ignoreDifferences:
+    - group: route.openshift.io
+      kind: Route
+      namespace: knative-serving-ingress
