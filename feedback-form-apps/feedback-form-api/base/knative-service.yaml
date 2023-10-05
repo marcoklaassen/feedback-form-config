@@ -31,7 +31,7 @@ spec:
       volumes:
         - name: kafka-keystore
           secret:
-            secret-name: kafka-keystore
+            secretName: kafka-keystore
             items:
               - key: clientkeystore.jks
                 path: clientkeystore.jks
