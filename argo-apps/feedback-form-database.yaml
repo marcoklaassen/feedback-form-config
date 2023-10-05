@@ -15,7 +15,8 @@ spec:
       releaseName: dev
       valueFiles:
         - values.yaml
-      valuesObject:
+      # values in a argocd 2.6 compatible way
+      values: |
         include:
           database: true
     path: feedback-form-apps/feedback-form-infrastructure
