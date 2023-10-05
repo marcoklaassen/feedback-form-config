@@ -11,6 +11,10 @@ spec:
     spec:
       containers:
         - image: feedback-form-image
+          volumeMounts:
+            - name: kafka-keystore
+              readOnly: true
+              mountPath: /mnt/secrets
           env:
             - name: kafka-bootstrap-servers
               valueFrom:
@@ -24,3 +28,11 @@ spec:
                   name: feedback-user
             - name: kafka-topic
               value: topic-name
+      volumes:
+        - name: kafka-keystore
+          secret:
+            secret-name: kafka-keystore
+            items:
+              - key: clientkeystore.jks
+                path: clientkeystore.jks
+            defaultMode: 420
