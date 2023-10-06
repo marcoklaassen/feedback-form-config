@@ -19,4 +19,4 @@ spec:
       kind: Route
       namespace: knative-serving-ingress
       jsonPointers:
-        - /
+        - /spec
