@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: feedback-persistence-api
-  namespace: openshift-gitops
+  namespace: feedback-app
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
