@@ -31,6 +31,11 @@ spec:
                   name: feedback-user
             - name: kafka-topic
               value: topic-name
+            - name: truststore-password
+              valueFrom:
+                secretKeyRef:
+                  key: truststore.password
+                  name: kafka-keystore
       volumes:
         - name: kafka-keystore
           secret:
