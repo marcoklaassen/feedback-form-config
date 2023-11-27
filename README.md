@@ -1,5 +1,8 @@
 # Feedback Form Project
+This is a Feedback Form demo project. 
+If you want to operate the entire demo in one cluster, ignore all differentiaons around *Kafka OpenShift Cluster* and *Application OpenShift Cluster*.
 
+But if you want to have a real world hybrid- & multi-cloud demo, this project is set up to be deployed in two different independent OpenShift clusters. 
 
 ## Prerequisites
 
@@ -7,12 +10,16 @@
 
 Install following OpenShift operators:
 
-* Red Hat Integration - AMQ Streams
-* Red Hat OpenShift GitOps
-* Red Hat OpenShift Pipelines
-* Red Hat OpenShift Serverless
+* Kafka OpenShift Cluster
+ * Red Hat Integration - AMQ Streams
+ * Red Hat OpenShift GitOps
 
-Configure the serverless operator with following resources:
+* Application OpenShift Cluster
+ * Red Hat OpenShift GitOps  
+ * Red Hat OpenShift Pipelines
+ * Red Hat OpenShift Serverless
+
+Configure the serverless operator with following resources in the *Application OpenShift Cluster*:
 
 ```
 kind: KnativeEventing
@@ -52,7 +59,7 @@ spec:
 
 ### Namespace configuration
 
-Create the `feedback-app` namespace:
+Create the `feedback-app` namespace in both clusters:
 
 ```
 apiVersion: v1
@@ -65,9 +72,20 @@ spec: {}
 status: {}
 ```
 
+## GitOps Applications
+
+|Application|Content|Target Cluster|
+|Feedback-Form-API|REST Endpoint and Kafka producer|Application OpenShift Cluster|
+|Feedback-Form-CICD|Tekton Pipeline components|Application OpenShift Cluster|
+|Feedback-Form-Kafka|AMQ Streams components|Kafka OpenShift Cluster|
+|Feedback-Form-Middleware|database components|Application OpenShift Cluster|
+|Feedback-Form-UI|not implemented yet|Application OpenShift Cluster|
+|Feedback-Persistence-API|Backend to persist incoming feedback from kafka-topic in a database|Application OpenShift Cluster|
+
 ## CICD configuration
 
-* Add webhook to your github project `https://github.com/marcoklaassen/feedback-form-api/settings/hooks`
+* Add webhook to your github project `https://github.com/marcoklaassen/feedback-form-api/settings/hooks`. Use the event-listener's route from the *Application OpenShift Cluster*.
+
 
 ## Copy Kafka CA Cert and Kafka User Secrets
 
