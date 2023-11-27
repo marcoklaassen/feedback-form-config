@@ -74,7 +74,8 @@ status: {}
 
 ## GitOps Applications
 
-|Application|Content|Target Cluster|
+| Application | Content | Target Cluster |
+|--------|--------|--------|
 |Feedback-Form-API|REST Endpoint and Kafka producer|Application OpenShift Cluster|
 |Feedback-Form-CICD|Tekton Pipeline components|Application OpenShift Cluster|
 |Feedback-Form-Kafka|AMQ Streams components|Kafka OpenShift Cluster|
